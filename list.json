@@ -6,4 +6,11 @@
     "file": "project_process_2026-01-20.json",
     "category": "HoReCa"
   }
+  {
+    "id": "cafe_v2",
+    "title": "Открытие кофейни",
+    "description": "Базовый процесс запуска небольшой кофейни. Включает наем персонала, закупку и маркетинг.",
+    "file": "project_process_2026-01-20.json",
+    "category": "HoReCa"
+  }
 ]
