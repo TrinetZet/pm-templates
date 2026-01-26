@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "exportedAt": "2026-01-26T06:40:00.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 1900000000001,
+      "name": "Менеджер по продажам (Sales)",
+      "rate": 1500,
+      "availableTime": 10000
+    },
+    {
+      "id": 1900000000002,
+      "name": "Технический эксперт (Presale)",
+      "rate": 2500,
+      "availableTime": 4000
+    },
+    {
+      "id": 1900000000003,
+      "name": "Потенциальный клиент",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    },
+    {
+      "id": 1900000000004,
+      "name": "Архив/Отказ",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 1900000000100,
+      "uiId": 1,
+      "action": "Регистрация входящей заявки",
+      "respId": 1900000000001,
+      "inputs": ["Новый лид (CRM/Почта)"],
+      "outputs": ["Карточка клиента"],
+      "timeMin": 5,
+      "timeMax": 15,
+      "respIds": [1900000000001]
+    },
+    {
+      "id": 1900000000101,
+      "uiId": 2,
+      "action": "Первичный квалификационный звонок",
+      "respId": 1900000000001,
+      "inputs": ["Карточка клиента"],
+      "outputs": ["Заполненный бриф"],
+      "timeMin": 15,
+      "timeMax": 30,
+      "respIds": [1900000000001]
+    },
+    {
+      "id": 1900000000102,
+      "uiId": 3,
+      "action": "Дисквалификация (Не целевой)",
+      "respId": 1900000000001,
+      "inputs": ["Заполненный бриф"],
+      "outputs": [],
+      "timeMin": 5,
+      "timeMax": 10,
+      "respIds": [1900000000004]
+    },
+    {
+      "id": 1900000000103,
+      "uiId": 4,
+      "action": "Назначение и проведение Zoom-встречи",
+      "respId": 1900000000001,
+      "inputs": ["Заполненный бриф"],
+      "outputs": ["Протокол встречи"],
+      "timeMin": 40,
+      "timeMax": 90,
+      "respIds": [1900000000001, 1900000000002]
+    },
+    {
+      "id": 1900000000104,
+      "uiId": 5,
+      "action": "Техническая оценка решения",
+      "respId": 1900000000002,
+      "inputs": ["Протокол встречи"],
+      "outputs": ["Техническое обоснование"],
+      "timeMin": 60,
+      "timeMax": 180,
+      "respIds": [1900000000002]
+    },
+    {
+      "id": 1900000000105,
+      "uiId": 6,
+      "action": "Расчет стоимости и подготовка КП",
+      "respId": 1900000000001,
+      "inputs": ["Техническое обоснование"],
+      "outputs": ["Финальное КП"],
+      "timeMin": 30,
+      "timeMax": 60,
+      "respIds": [1900000000001]
+    },
+    {
+      "id": 1900000000106,
+      "uiId": 7,
+      "action": "Презентация КП клиенту",
+      "respId": 1900000000001,
+      "inputs": ["Финальное КП"],
+      "outputs": ["Решение по сделке"],
+      "timeMin": 20,
+      "timeMax": 45,
+      "respIds": [1900000000001]
+    }
+  ],
+  "structure": [
+    {
+      "id": 1900000000200,
+      "type": "step",
+      "stepId": 1900000000100
+    },
+    {
+      "id": 1900000000201,
+      "type": "step",
+      "stepId": 1900000000101
+    },
+    {
+      "id": 1900000000202,
+      "type": "group",
+      "logic": "OR",
+      "children": [
+        {
+          "id": 1900000000203,
+          "type": "step",
+          "stepId": 1900000000102,
+          "probability": 20
+        },
+        {
+          "id": 1900000000204,
+          "type": "step",
+          "stepId": 1900000000103,
+          "probability": 80
+        }
+      ]
+    },
+    {
+      "id": 1900000000205,
+      "type": "step",
+      "stepId": 1900000000104
+    },
+    {
+      "id": 1900000000206,
+      "type": "step",
+      "stepId": 1900000000105
+    },
+    {
+      "id": 1900000000207,
+      "type": "step",
+      "stepId": 1900000000106
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepInputs": [],
+    "newStepOutputs": [],
+    "editStepId": null,
+    "editStepInputs": [],
+    "editStepOutputs": [],
+    "newStepRespIds": [1900000000001]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "exportedAt": "2026-01-26T10:00:00.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 2000000000001,
+      "name": "HR-менеджер / Рекрутер",
+      "rate": 1200,
+      "availableTime": 10000
+    },
+    {
+      "id": 2000000000002,
+      "name": "Нанимающий менеджер (Lead)",
+      "rate": 3000,
+      "availableTime": 3000
+    },
+    {
+      "id": 2000000000003,
+      "name": "Служба безопасности / IT",
+      "rate": 1800,
+      "availableTime": 2000
+    },
+    {
+      "id": 2000000000004,
+      "name": "Кандидат (Отказ)",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 2000000000100,
+      "uiId": 1,
+      "action": "Публикация вакансии и скрининг резюме",
+      "respId": 2000000000001,
+      "inputs": ["Профиль должности"],
+      "outputs": ["Long-list кандидатов"],
+      "timeMin": 60,
+      "timeMax": 120,
+      "respIds": [2000000000001]
+    },
+    {
+      "id": 2000000000101,
+      "uiId": 2,
+      "action": "Первичное HR-интервью",
+      "respId": 2000000000001,
+      "inputs": ["Long-list кандидатов"],
+      "outputs": ["Оценка soft-skills"],
+      "timeMin": 30,
+      "timeMax": 45,
+      "respIds": [2000000000001]
+    },
+    {
+      "id": 2000000000102,
+      "uiId": 3,
+      "action": "Техническое интервью / Тестовое задание",
+      "respId": 2000000000002,
+      "inputs": ["Оценка soft-skills"],
+      "outputs": ["Результат ТЗ"],
+      "timeMin": 60,
+      "timeMax": 120,
+      "respIds": [2000000000002]
+    },
+    {
+      "id": 2000000000103,
+      "uiId": 4,
+      "action": "Проверка СБ и сбор рекомендаций",
+      "respId": 2000000000003,
+      "inputs": ["Анкета кандидата"],
+      "outputs": ["Заключение СБ"],
+      "timeMin": 120,
+      "timeMax": 480,
+      "respIds": [2000000000003]
+    },
+    {
+      "id": 2000000000104,
+      "uiId": 5,
+      "action": "Выставление и подписание Offer",
+      "respId": 2000000000001,
+      "inputs": ["Заключение СБ"],
+      "outputs": ["Подписанный оффер"],
+      "timeMin": 20,
+      "timeMax": 40,
+      "respIds": [2000000000001]
+    },
+    {
+      "id": 2000000000105,
+      "uiId": 6,
+      "action": "Подготовка рабочего места и доступов",
+      "respId": 2000000000003,
+      "inputs": ["Подписанный оффер"],
+      "outputs": ["Логины/Пароли/Техника"],
+      "timeMin": 60,
+      "timeMax": 180,
+      "respIds": [2000000000003]
+    },
+    {
+      "id": 2000000000106,
+      "uiId": 7,
+      "action": "Первый рабочий день и Welcome-тренинг",
+      "respId": 2000000000001,
+      "inputs": ["Логины/Пароли/Техника"],
+      "outputs": ["План адаптации"],
+      "timeMin": 120,
+      "timeMax": 240,
+      "respIds": [2000000000001, 2000000000002]
+    }
+  ],
+  "structure": [
+    {
+      "id": 2000000000200,
+      "type": "step",
+      "stepId": 2000000000100
+    },
+    {
+      "id": 2000000000201,
+      "type": "step",
+      "stepId": 2000000000101
+    },
+    {
+      "id": 2000000000202,
+      "type": "step",
+      "stepId": 2000000000102
+    },
+    {
+      "id": 2000000000203,
+      "type": "group",
+      "logic": "OR",
+      "children": [
+        {
+          "id": 2000000000204,
+          "type": "step",
+          "stepId": 2000000000103,
+          "probability": 90
+        },
+        {
+          "id": 2000000000205,
+          "type": "step",
+          "action": "Отказ по СБ",
+          "probability": 10,
+          "respIds": [2000000000004]
+        }
+      ]
+    },
+    {
+      "id": 2000000000206,
+      "type": "step",
+      "stepId": 2000000000104
+    },
+    {
+      "id": 2000000000207,
+      "type": "group",
+      "logic": "AND",
+      "children": [
+        {
+          "id": 2000000000208,
+          "type": "step",
+          "stepId": 2000000000105
+        },
+        {
+          "id": 2000000000209,
+          "type": "step",
+          "stepId": 2000000000106
+        }
+      ]
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepInputs": [],
+    "newStepOutputs": [],
+    "editStepId": null,
+    "editStepInputs": [],
+    "editStepOutputs": [],
+    "newStepRespIds": [2000000000001]
+  }
+}
