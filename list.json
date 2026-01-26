@@ -3,56 +3,56 @@
     "id": "Sales_1",
     "title": "Обработка входящего лида",
     "description": "Фундамент вашего отдела продаж. Сценарий исключает потерю заявок и хаотичные действия менеджеров.",
-    "file": "project_process_2026-01-20.json",
+    "file": "Sales_1.json",
     "category": "Sales"
   },
   {
     "id": "HR_1",
     "title": "Найм и онбординг сотрудника",
     "description": "Логическая цепочка от публикации вакансии до завершения испытательного срока.",
-    "file": "project_process_2026-01-20.json",
+    "file": "HR_1.json",
     "category": "HR"
   },
   {
     "id": "Service_1",
     "title": "Обработка запросов",
     "description": "Алгоритм превращения разгневанного клиента в лояльного фаната.",
-    "file": "project_process_2026-01-20.json",
+    "file": "Service_1.json",
     "category": "Service"
   },
   {
     "id": "HoReCa_1",
     "title": "Производственный цикл при заказе товаров питания",
     "description": "Описывает путь заказа от момента оплаты до передачи курьеру.",
-    "file": "project_process_2026-01-20.json",
+    "file": "HoReCa_1.json",
     "category": "HoReCa"
   },
   {
     "id": "Logistics_1",
     "title": "Закупка и складской учет",
     "description": "Сценарий описывает логику пополнения запасов: от анализа остатков до сверки накладных.",
-    "file": "project_process_2026-01-20.json",
+    "file": "Logistics_1.json",
     "category": "Logistics"
   },
   {
     "id": "Marketing_1",
     "title": "Запуск рекламной кампании",
     "description": "Сценарий связывает креатив, техническую настройку и аналитику в единую цепь.",
-    "file": "project_process_2026-01-20.json",
+    "file": "Marketing_1.json",
     "category": "Marketing"
   },
   {
     "id": "Management_1",
     "title": "Еженедельный управленческий цикл",
     "description": "Сценарий систематизирует сбор отчетности, проведение планерок и контроль исполнения задач.",
-    "file": "project_process_2026-01-20.json",
+    "file": "Management_1.json",
     "category": "Management"
   },
   {
     "id": "Admin_1",
     "title": "Маркетинговое агентство",
     "description": "Четкий алгоритм передачи дел, изъятия доступов и материальных ценностей.",
-    "file": "project_process_шаблон.json",
+    "file": "Admin_1.json",
     "category": "Admin"
   }
 ]
