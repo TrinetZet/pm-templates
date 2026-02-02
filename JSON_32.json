@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "exportedAt": "2026-02-02T10:55:20.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 4700000000001,
+      "name": "Product Manager / Growth Lead",
+      "rate": 4500,
+      "availableTime": 480
+    },
+    {
+      "id": 4700000000002,
+      "name": "UX/UI Designer",
+      "rate": 3500,
+      "availableTime": 480
+    },
+    {
+      "id": 4700000000003,
+      "name": "Frontend Developer",
+      "rate": 4000,
+      "availableTime": 480
+    },
+    {
+      "id": 4700000000004,
+      "name": "Пользователь активирован (Aha-moment) (Финал)",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 4700000000100,
+      "uiId": 1,
+      "action": "Проектирование флоу регистрации и квалификации (Welcome Survey)",
+      "respId": 4700000000002,
+      "inputs": [
+        "User Personas",
+        "Ключевые ценностные предложения"
+      ],
+      "outputs": [
+        "User Flow Map",
+        "Макеты экранов онбординга"
+      ],
+      "timeMin": 240,
+      "timeMax": 720,
+      "respIds": [
+        4700000000002,
+        4700000000001
+      ]
+    },
+    {
+      "id": 4700000000101,
+      "uiId": 2,
+      "action": "Реализация технических триггеров и трекинга (Product Analytics)",
+      "respId": 4700000000003,
+      "inputs": [
+        "План событий (Amplitude/Mixpanel)",
+        "API документация"
+      ],
+      "outputs": [
+        "Рабочая форма регистрации",
+        "Настроенные ивенты (Sign Up, First Action)"
+      ],
+      "timeMin": 480,
+      "timeMax": 1440,
+      "respIds": [
+        4700000000003
+      ]
+    },
+    {
+      "id": 4700000000102,
+      "uiId": 3,
+      "action": "Создание обучающих подсказок (Tooltips / Product Tour)",
+      "respId": 4700000000002,
+      "inputs": [
+        "Сценарий «Путь к Aha-moment»",
+        "Копирайтинг (Microcopy)"
+      ],
+      "outputs": [
+        "Интерактивный гид по интерфейсу"
+      ],
+      "timeMin": 180,
+      "timeMax": 480,
+      "respIds": [
+        4700000000002,
+        4700000000003
+      ]
+    },
+    {
+      "id": 4700000000103,
+      "uiId": 4,
+      "action": "Настройка цепочки писем активации (Retention Email Sequence)",
+      "respId": 4700000000001,
+      "inputs": [
+        "Сегменты пользователей",
+        "Триггеры бездействия"
+      ],
+      "outputs": [
+        "Автоматизированная воронка в CRM/ESP"
+      ],
+      "timeMin": 120,
+      "timeMax": 360,
+      "respIds": [
+        4700000000001
+      ]
+    },
+    {
+      "id": 4700000000104,
+      "uiId": 5,
+      "action": "Анализ воронки и оптимизация (Funnel Friction Audit)",
+      "respId": 4700000000001,
+      "inputs": [
+        "Данные о точках отвала (Drop-off points)",
+        "Записи сессий (Hotjar/FullStory)"
+      ],
+      "outputs": [
+        "Список гипотез для A/B теста"
+      ],
+      "timeMin": 180,
+      "timeMax": 480,
+      "respIds": [
+        4700000000001
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "id": 4700000000200,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        {
+          "id": 4700000000201,
+          "type": "step",
+          "stepId": 4700000000100
+        },
+        {
+          "id": 4700000000202,
+          "type": "step",
+          "stepId": 4700000000101
+        }
+      ]
+    },
+    {
+      "id": 4700000000203,
+      "type": "group",
+      "logic": "AND",
+      "children": [
+        {
+          "id": 4700000000204,
+          "type": "step",
+          "stepId": 4700000000102
+        },
+        {
+          "id": 4700000000205,
+          "type": "step",
+          "stepId": 4700000000103
+        }
+      ]
+    },
+    {
+      "id": 4700000000206,
+      "type": "group",
+      "logic": "OR",
+      "children": [
+        {
+          "id": 4700000000207,
+          "type": "step",
+          "stepId": 4700000000104,
+          "action": "Высокая конверсия в активацию",
+          "probability": 70
+        },
+        {
+          "id": 4700000000208,
+          "type": "step",
+          "stepId": 4700000000100,
+          "action": "Редизайн флоу (Низкий Retention)",
+          "probability": 30
+        }
+      ]
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepInputs": [],
+    "newStepOutputs": [],
+    "editStepId": null,
+    "editStepInputs": [],
+    "editStepOutputs": [],
+    "newStepRespIds": [
+      4700000000001
+    ]
+  }
+}
+

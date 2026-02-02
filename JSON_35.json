@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "exportedAt": "2026-02-02T10:56:45.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 5000000000001,
+      "name": "Account Executive (Senior Sales)",
+      "rate": 5500,
+      "availableTime": 480
+    },
+    {
+      "id": 5000000000002,
+      "name": "Pre-sale Engineer / Solution Architect",
+      "rate": 5000,
+      "availableTime": 480
+    },
+    {
+      "id": 5000000000003,
+      "name": "Юрист / Комплаенс-менеджер",
+      "rate": 3500,
+      "availableTime": 480
+    },
+    {
+      "id": 5000000000004,
+      "name": "Контракт подписан, проект запущен (Финал)",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 5000000000100,
+      "uiId": 1,
+      "action": "Discovery Call: Диагностика болей и выявление ЛПР (BANT/MEDDIC)",
+      "respId": 5000000000001,
+      "inputs": [
+        "Исследование рынка клиента",
+        "Скрипт квалификации"
+      ],
+      "outputs": [
+        "Заполненная карточка сделки",
+        "Список стейкхолдеров (Economic Buyer, Champion)"
+      ],
+      "timeMin": 45,
+      "timeMax": 90,
+      "respIds": [
+        5000000000001
+      ]
+    },
+    {
+      "id": 5000000000101,
+      "uiId": 2,
+      "action": "Разработка технической архитектуры и Custom Demo",
+      "respId": 5000000000002,
+      "inputs": [
+        "Технические требования (IT-ландшафт клиента)",
+        "Use-cases бизнеса"
+      ],
+      "outputs": [
+        "Solution Design Document",
+        "Персонализированный демо-стенд"
+      ],
+      "timeMin": 240,
+      "timeMax": 960,
+      "respIds": [
+        5000000000002
+      ]
+    },
+    {
+      "id": 5000000000102,
+      "uiId": 3,
+      "action": "Защита бизнес-кейса и расчет ROI/TCO",
+      "respId": 5000000000001,
+      "inputs": [
+        "Финансовые показатели клиента",
+        "Модель окупаемости решения"
+      ],
+      "outputs": [
+        "Коммерческое предложение (Value Proposal)",
+        "Одобрение от финансового директора (CFO)"
+      ],
+      "timeMin": 60,
+      "timeMax": 180,
+      "respIds": [
+        5000000000001,
+        5000000000002
+      ]
+    },
+    {
+      "id": 5000000000103,
+      "uiId": 4,
+      "action": "Юридические согласования и Security Review",
+      "respId": 5000000000003,
+      "inputs": [
+        "Договор (MSA)",
+        "Анкета информационной безопасности"
+      ],
+      "outputs": [
+        "Согласованный контракт",
+        "Подписанный NDA"
+      ],
+      "timeMin": 480,
+      "timeMax": 4800,
+      "respIds": [
+        5000000000003,
+        5000000000001
+      ]
+    },
+    {
+      "id": 5000000000104,
+      "uiId": 5,
+      "action": "Closing: Подписание и Handover в отдел Implementation",
+      "respId": 5000000000001,
+      "inputs": [
+        "Финальные версии документов",
+        "План внедрения (Roadmap)"
+      ],
+      "outputs": [
+        "Скан подписанного договора",
+        "Передача клиента в Customer Success"
+      ],
+      "timeMin": 30,
+      "timeMax": 120,
+      "respIds": [
+        5000000000001
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "id": 5000000000200,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        {
+          "id": 5000000000201,
+          "type": "step",
+          "stepId": 5000000000100
+        },
+        {
+          "id": 5000000000202,
+          "type": "step",
+          "stepId": 5000000000101
+        }
+      ]
+    },
+    {
+      "id": 5000000000203,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        {
+          "id": 5000000000204,
+          "type": "step",
+          "stepId": 5000000000102
+        }
+      ]
+    },
+    {
+      "id": 5000000000205,
+      "type": "group",
+      "logic": "OR",
+      "children": [
+        {
+          "id": 5000000000206,
+          "type": "group",
+          "logic": "SEQ",
+          "children": [
+            {
+              "id": 5000000000207,
+              "type": "step",
+              "stepId": 5000000000103
+            },
+            {
+              "id": 5000000000208,
+              "type": "step",
+              "stepId": 5000000000104
+            }
+          ],
+          "action": "Сделка выиграна (Closed Won)",
+          "probability": 40
+        },
+        {
+          "id": 5000000000209,
+          "type": "step",
+          "stepId": 5000000000100,
+          "action": "Проигрыш (Closed Lost / Nurturing)",
+          "probability": 60
+        }
+      ]
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepInputs": [],
+    "newStepOutputs": [],
+    "editStepId": null,
+    "editStepInputs": [],
+    "editStepOutputs": [],
+    "newStepRespIds": [
+      5000000000001
+    ]
+  }
+}
+

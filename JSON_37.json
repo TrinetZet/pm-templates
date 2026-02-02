@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "exportedAt": "2026-02-02T10:57:45.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 5200000000001,
+      "name": "Product Analyst / Growth Marketer",
+      "rate": 4200,
+      "availableTime": 480
+    },
+    {
+      "id": 5200000000002,
+      "name": "Data Scientist / Backend Engineer",
+      "rate": 5000,
+      "availableTime": 480
+    },
+    {
+      "id": 5200000000003,
+      "name": "Frontend Developer",
+      "rate": 4000,
+      "availableTime": 480
+    },
+    {
+      "id": 5200000000004,
+      "name": "Результат эксперимента внедрен (Финал)",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 5200000000100,
+      "uiId": 1,
+      "action": "Формирование гипотезы и расчет минимального эффекта (MDE)",
+      "respId": 5200000000001,
+      "inputs": [
+        "Текущие продуктовые метрики",
+        "Калькулятор статистической мощности"
+      ],
+      "outputs": [
+        "Нулевая и альтернативная гипотезы",
+        "Размер выборки и длительность теста"
+      ],
+      "timeMin": 60,
+      "timeMax": 180,
+      "respIds": [
+        5200000000001
+      ]
+    },
+    {
+      "id": 5200000000101,
+      "uiId": 2,
+      "action": "Техническая подготовка: сплитование и логирование",
+      "respId": 5200000000002,
+      "inputs": [
+        "Feature Flags (LaunchDarkly/Firebase)",
+        "Hash-функция для распределения пользователей"
+      ],
+      "outputs": [
+        "Разделение на Control и Variant группы",
+        "Настроенные события в аналитике"
+      ],
+      "timeMin": 120,
+      "timeMax": 360,
+      "respIds": [
+        5200000000002,
+        5200000000003
+      ]
+    },
+    {
+      "id": 5200000000102,
+      "uiId": 3,
+      "action": "Запуск теста и мониторинг прокси-метрик",
+      "respId": 5200000000001,
+      "inputs": [
+        "Данные в реальном времени",
+        "Health-check дашборд"
+      ],
+      "outputs": [
+        "Отсутствие SRM (Sample Ratio Mismatch)",
+        "Корректный сбор данных"
+      ],
+      "timeMin": 10080,
+      "timeMax": 20160,
+      "respIds": [
+        5200000000001
+      ]
+    },
+    {
+      "id": 5200000000103,
+      "uiId": 4,
+      "action": "Статистический анализ (P-value, Доверительные интервалы)",
+      "respId": 5200000000001,
+      "inputs": [
+        "Сырые данные эксперимента",
+        "Библиотеки для анализа (SciPy/Statsmodels)"
+      ],
+      "outputs": [
+        "Статистическая значимость результата",
+        "Оценка влияния на North Star Metric"
+      ],
+      "timeMin": 180,
+      "timeMax": 480,
+      "respIds": [
+        5200000000001,
+        5200000000002
+      ]
+    },
+    {
+      "id": 5200000000104,
+      "uiId": 5,
+      "action": "Раскатка победившего варианта или откат (Decision Making)",
+      "respId": 5200000000003,
+      "inputs": [
+        "Аналитический отчет",
+        "Feature Flag управления"
+      ],
+      "outputs": [
+        "Код очищен от условий теста",
+        "Изменение внедрено на 100% пользователей"
+      ],
+      "timeMin": 40,
+      "timeMax": 120,
+      "respIds": [
+        5200000000003,
+        5200000000001
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "id": 5200000000200,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        {
+          "id": 5200000000201,
+          "type": "step",
+          "stepId": 5200000000100
+        },
+        {
+          "id": 5200000000202,
+          "type": "step",
+          "stepId": 5200000000101
+        },
+        {
+          "id": 5200000000203,
+          "type": "step",
+          "stepId": 5200000000102
+        }
+      ]
+    },
+    {
+      "id": 5200000000204,
+      "type": "group",
+      "logic": "OR",
+      "children": [
+        {
+          "id": 5200000000205,
+          "type": "group",
+          "logic": "SEQ",
+          "children": [
+            {
+              "id": 5200000000206,
+              "type": "step",
+              "stepId": 5200000000103
+            },
+            {
+              "id": 5200000000207,
+              "type": "step",
+              "stepId": 5200000000104
+            }
+          ],
+          "action": "Результаты статистически значимы",
+          "probability": 40
+        },
+        {
+          "id": 5200000000208,
+          "type": "step",
+          "stepId": 5200000000103,
+          "action": "Результат нейтральный (Hypothesis Rejected)",
+          "probability": 60
+        }
+      ]
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepInputs": [],
+    "newStepOutputs": [],
+    "editStepId": null,
+    "editStepInputs": [],
+    "editStepOutputs": [],
+    "newStepRespIds": [
+      5200000000001
+    ]
+  }
+}
+
