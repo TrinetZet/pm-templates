@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "exportedAt": "2026-02-02T11:58:00.000Z",
+    "appVersion": "Mentor_data_v17"
+  },
+  "part": [
+    {
+      "id": 1550000000001,
+      "name": "Project Manager / Scrum Master",
+      "rate": 11000,
+      "availableTime": 480
+    },
+    {
+      "id": 1550000000002,
+      "name": "Team Lead / Senior Engineer",
+      "rate": 18000,
+      "availableTime": 480
+    },
+    {
+      "id": 1550000000003,
+      "name": "Исполнитель (Developer/Designer)",
+      "rate": 9000,
+      "availableTime": 480
+    },
+    {
+      "id": 1550000000004,
+      "name": "Итерация завершена, ценность доставлена (Финал)",
+      "rate": 0,
+      "availableTime": 0,
+      "excludeFromStats": true
+    }
+  ],
+  "resources": [],
+  "steps": [
+    {
+      "id": 1550000000100,
+      "uiId": 1,
+      "action": "Планирование и декомпозиция задач (Backlog Grooming)",
+      "respId": 1550000000001,
+      "inputs": [
+        "Бизнес-требования",
+        "Технический долг"
+      ],
+      "outputs": [
+        "Оцененные задачи в Jira/Linear",
+        "План спринта / итерации"
+      ],
+      "timeMin": 120,
+      "timeMax": 480,
+      "respIds": [
+        1550000000001,
+        1550000000002
+      ]
+    },
+    {
+      "id": 1550000000101,
+      "uiId": 2,
+      "action": "Активная фаза разработки (Production)",
+      "respId": 1550000000003,
+      "inputs": [
+        "Техническое задание",
+        "Дизайн-система"
+      ],
+      "outputs": [
+        "Feature-ветки в Git",
+        "Промежуточные отчеты в Daily Standup"
+      ],
+      "timeMin": 1440,
+      "timeMax": 14400,
+      "respIds": [
+        1550000000003
+      ]
+    },
+    {
+      "id": 1550000000102,
+      "uiId": 3,
+      "action": "Контроль качества и Code Review",
+      "respId": 1550000000002,
+      "inputs": [
+        "Pull Request",
+        "Стандарты кодирования"
+      ],
+      "outputs": [
+        "Утвержденный код (Merged)",
+        "Список исправлений (Refactoring)"
+      ],
+      "timeMin": 60,
+      "timeMax": 480,
+      "respIds": [
+        1550000000002,
+        1550000000003
+      ]
+    },
+    {
+      "id": 1550000000103,
+      "uiId": 4,
+      "action": "Демонстрация и приемка (Review)",
+      "respId": 1550000000001,
+      "inputs": [
+        "Готовый функционал на Staging",
+        "Критерии приемки (Acceptance Criteria)"
+      ],
+      "outputs": [
+        "Протокол приемки",
+        "Релиз в Production"
+      ],
+      "timeMin": 60,
+      "timeMax": 120,
+      "respIds": [
+        1550000000001,
+        1550000000002
+      ]
+    },
+    {
+      "id": 1550000000104,
+      "uiId": 5,
+      "action": "Ретроспектива и анализ метрик",
+      "respId": 1550000000001,
+      "inputs": [
+        "Velocity команды",
+        "Обратная связь от участников"
+      ],
+      "outputs": [
+        "Список улучшений процесса",
+        "Action items на следующий цикл"
+      ],
+      "timeMin": 60,
+      "timeMax": 180,
+      "respIds": [
+        1550000000001,
+        1550000000003
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "id": 1550000000200,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        { "id": 1550000000201, "type": "step", "stepId": 1550000000100 },
+        { "id": 1550000000202, "type": "step", "stepId": 1550000000101 }
+      ]
+    },
+    {
+      "id": 1550000000203,
+      "type": "group",
+      "logic": "SEQ",
+      "children": [
+        { "id": 1550000000204, "type": "step", "stepId": 1550000000102 },
+        { "id": 1550000000205, "type": "step", "stepId": 1550000000103 },
+        { "id": 1550000000206, "type": "step", "stepId": 1550000000104 }
+      ]
+    }
+  ],
+  "temp": {
+    "inputs": [],
+    "outputs": [],
+    "newStepRespIds": [1550000000001]
+  }
+}
+
